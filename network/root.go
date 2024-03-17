@@ -10,7 +10,9 @@ func NewNetwork() *Network {
 	r := &Network{
 		engine: gin.New(),
 	}
-
-	r.engine.Run(":8080")
 	return r
+}
+
+func (n *Network) ServerStart(port string) error {
+	return n.engine.Run(port)
 }

@@ -15,5 +15,10 @@ func NewCmd(filepath string) *Cmd {
 		config:  config.NewConfig(filepath),
 		network: network.NewNetwork(),
 	}
+
+	if err := c.network.ServerStart(c.config.Server.Port); err != nil {
+		panic(err)
+	}
+
 	return c
 }
